@@ -17,6 +17,7 @@ class RegisterAPIView(APIView):
 
 
 class ActivationAPIView(APIView):
+
     def get(self, request, activation_code):
         user = get_object_or_404(User, activation_code=activation_code)
         user.is_active = True

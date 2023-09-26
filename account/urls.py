@@ -9,9 +9,9 @@ urlpatterns = [
     path('register/', RegisterAPIView.as_view()),
     path('login/', TokenObtainPairView.as_view()),
     path('refresh/', TokenRefreshView.as_view()),
-    
+
     # Регистрация - Айдын
     # Почта + активация - Саян + Адиль
-    path('activate/<uuid:activation_code>/', ActivationAPIView.as_view())
+    path('activate/<uuid:activation_code>/', ActivationAPIView.as_view()),
     # смена пароля - Эркин
 ]
