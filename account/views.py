@@ -11,9 +11,5 @@ class ActivationAPIView(APIView):
         user = get_object_or_404(User, activation_code=activation_code)
         user.is_active = True
         user.activation_code = ''
-        user.save(updated_fields=['is_active', 'activation_code'])
-
+        user.save(update_fields=['is_active', 'activation_code'])
         return Response('Успешно', status=200)
-
-
-
