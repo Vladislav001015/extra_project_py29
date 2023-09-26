@@ -34,7 +34,6 @@ class CustomUserManager(UserManager):
         return self._create_user(email, password, **extra_fields)
 
 
-
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
     activation_code = models.CharField(max_length=40, blank=True)
