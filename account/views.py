@@ -14,6 +14,3 @@ class ActivationAPIView(APIView):
         user.save(updated_fields=['is_active', 'activation_code'])
 
         return Response('Успешно', status=200)
-
-
-
