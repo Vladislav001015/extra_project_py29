@@ -6,12 +6,11 @@ from rest_framework_simplejwt.views import (
 )
 
 urlpatterns = [
-    path('register/', RegisterAPIView.as_view()),
     path('login/', TokenObtainPairView.as_view()),
     path('refresh/', TokenRefreshView.as_view()),
-
-    # Регистрация - Айдын
-    # Почта + активация - Саян + Адиль
+    path('register/', RegisterAPIView.as_view()),
     path('activate/<uuid:activation_code>/', ActivationAPIView.as_view()),
-    # смена пароля - Эркин
+    path('change_password/', ChangePasswordAPIView.as_view()),
+    path('forgot_password/', ForgotPasswordAPIView.as_view()),
+    path('forgot_password_confirm/', ForgotPasswordConfirmAPIView.as_view()),
 ]

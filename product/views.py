@@ -17,3 +17,5 @@ class ProductModelViewSet(viewsets.ModelViewSet):
     
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+        
+    # TODO: видеть только свои продукты
