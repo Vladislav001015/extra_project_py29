@@ -14,3 +14,14 @@ class ProductSerializer(serializers.ModelSerializer):
         return super().create(validated_data)
 
 
+class CategorySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Category
+        fields = '__all__'
+
+    def create(self, validated_data):
+        print(validated_data)
+        return super().create(validated_data)
+
+
