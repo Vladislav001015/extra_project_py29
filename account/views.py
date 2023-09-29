@@ -42,10 +42,15 @@ class ChangePasswordAPIView(APIView):
 
 class ForgotPasswordAPIView(APIView):
     def post(self, request):
-        ...
-        # запрашиваем email, проверяем есть ли такой пользователь, генерируем код и отправлем его ему на почту
+        serializer = ForgotPasswordSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.send_code()
+        return Response('Вам отправлено на эту почту письмо с кодом для восстановления пароля', status=200)
+
 
 class ForgotPasswordConfirmAPIView(APIView):
     def post(self, request):
-        ...
-        # запрашиваем почту, код, пароль1, пароль2, проверям есть ли такой пользователь, проверяем код относится к нему или нет, проверяем пароли, -> меняем пароль
+        serializer = ForgotPasswordConfirmSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.set_new_password()
+        return Response('Пароль успешно обновлен', status=200)

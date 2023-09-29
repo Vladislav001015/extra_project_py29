@@ -7,3 +7,11 @@ def send_activation_code(email, code):
         'vladislav001015@gmail.com',
         [email]
     )
+
+def send_forgot_password_code(email, code):
+    send_mail(
+        'Extra theme py29',
+        f'Вот ваш код для востановления пароля, никому не показывайте его: {code}',
+        'vladislav001015@gmail.com',
+        [email]
+    )
