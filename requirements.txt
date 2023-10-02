@@ -4,3 +4,4 @@ python-decouple
 djangorestframework-simplejwt
 pillow
 drf-yasg
+django-cors-headers
