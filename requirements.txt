@@ -5,3 +5,5 @@ djangorestframework-simplejwt
 pillow
 drf-yasg
 django-cors-headers
+redis
+celery

@@ -13,4 +13,6 @@ urlpatterns = [
     path('change_password/', ChangePasswordAPIView.as_view()),
     path('forgot_password/', ForgotPasswordAPIView.as_view()),
     path('forgot_password_confirm/', ForgotPasswordConfirmAPIView.as_view()),
+    
+    path('test_celery/', send_mail_view)
 ]

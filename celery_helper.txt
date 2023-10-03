@@ -1,0 +1,2 @@
+celery -A config worker -l debug
+celery -A config beat

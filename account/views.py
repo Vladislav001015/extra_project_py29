@@ -4,6 +4,8 @@ from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 from account.serializers import *
+from rest_framework.decorators import api_view
+
 
 User = get_user_model()
 
@@ -54,3 +56,9 @@ class ForgotPasswordConfirmAPIView(APIView):
         serializer.is_valid(raise_exception=True)
         serializer.set_new_password()
         return Response('Пароль успешно обновлен', status=200)
+
+@api_view(['GET'])
+def send_mail_view(request):
+    from account.tasks import send_test_message
+    send_test_message.delay()
+    return Response('Отправленно!')
