@@ -164,3 +164,41 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    
+    'formatters': {
+        'main': {
+            'format': '{levelname} --- {asctime} --- {module} -- {message}',
+            'style': '{'
+        }
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'main'
+        },
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': 'info.log',
+            'formatter': 'main'
+        },
+        'product_file': {
+            'class': 'logging.FileHandler',
+            'filename': 'product.log',
+            'formatter': 'main'
+        }
+            
+    },
+    'loggers': {
+        '': {
+            'level': 'DEBUG',
+            'handlers': ['console', 'file'] 
+        },
+        'product.views': {
+            'handlers': ['product_file'],
+        }
+    }
+}
