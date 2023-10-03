@@ -25,6 +25,7 @@ class ProductModelViewSet(viewsets.ModelViewSet):
     
     def list(self, request, *args, **kwargs):
         logger.info('Hello')
+        print(request.john)
         return super().list(request, *args, **kwargs)
     # def get_queryset(self):
     #     queryset = super().get_queryset()
