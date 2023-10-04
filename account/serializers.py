@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 
-from account.utils import send_activation_code, send_forgot_password_code
+from account.tasks import send_activation_code, send_forgot_password_code
 
 User = get_user_model()
 
@@ -23,7 +23,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user = User.objects.create_user(**validated_data)
-        send_activation_code(user.email, user.activation_code)
+        send_activation_code.delay(user.email, user.activation_code)
         return user
 
 
@@ -69,7 +69,7 @@ class ForgotPasswordSerializer(serializers.Serializer):
         user = User.objects.get(email=email)
         user.create_activation_code()
         user.save()
-        send_forgot_password_code(user.email, user.activation_code)
+        send_forgot_password_code.delay(user.email, user.activation_code)
 
 
 class ForgotPasswordConfirmSerializer(serializers.Serializer):
