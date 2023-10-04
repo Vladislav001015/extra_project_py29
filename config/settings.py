@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     # apps
     'account',
     'product',
+    'spam',
 ]
 
 MIDDLEWARE = [
